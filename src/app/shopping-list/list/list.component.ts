@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { ShoppingList } from '../list-data/list-interface';
+import { ListManagerService } from '../list-data/list-manager.service';
 
 @Component({
   selector: 'app-list',
@@ -6,7 +9,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list.component.scss'],
 })
 export class ListComponent implements OnInit {
-  constructor() {}
+  shoppinglist$: Observable<ShoppingList>;
 
-  ngOnInit(): void {}
+  constructor(private manager: ListManagerService) {}
+
+  ngOnInit(): void {
+    this.shoppinglist$ = this.manager.getShoppingList();
+  }
 }
