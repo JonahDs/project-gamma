@@ -1,6 +1,6 @@
 export interface DashBoardConfig {
-    color: String;
-    text: String;
-    rows: number;
-    cols: number;
+  color: string;
+  text: string;
+  rows: number;
+  cols: number;
 }
