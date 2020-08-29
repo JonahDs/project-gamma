@@ -9,6 +9,8 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './home/dashboard/dashboard.component';
 import { MaterialModule } from './material/material.module';
 import { ShoppingListModule } from './shopping-list/shopping-list.module';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent, DashboardComponent],
@@ -21,6 +23,9 @@ import { ShoppingListModule } from './shopping-list/shopping-list.module';
     StoreModule.forRoot({}),
     EffectsModule.forRoot(),
     ShoppingListModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],
