@@ -1,0 +1,18 @@
+<ng-container *ngIf="!(state$ | async).isFetching; else loading">
+
+    <mat-list>
+        <mat-list-item *ngFor="let item of (shoppingList$ | async)">
+            <app-item matRipple [item]="item"></app-item>
+        </mat-list-item>
+    </mat-list>
+
+
+</ng-container>
+
+<ng-template #error>
+    <p>{{errorMsg}}</p>
+</ng-template>
+
+<ng-template #loading>
+    <p>Loading...</p>
+</ng-template>

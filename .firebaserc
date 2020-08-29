@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "project-gamma-99cac": {
+      "hosting": {
+        "project-gamma": [
+          "project-gamma-99cac"
+        ]
+      }
+    }
+  }
+}
