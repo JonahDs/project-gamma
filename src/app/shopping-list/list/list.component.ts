@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ShoppingList } from '../list-data/list-interface';
-import { ListManagerService } from '../list-data/list-manager.service';
+import { map } from 'rxjs/operators';
+import { ShoppingList } from '../list-abstraction/list-interface';
+import { ListManagerService } from '../list-abstraction/list-manager.service';
+import { ListState } from '../list-core/list-state-management/state';
 
 @Component({
   selector: 'app-list',
@@ -9,11 +11,13 @@ import { ListManagerService } from '../list-data/list-manager.service';
   styleUrls: ['./list.component.scss'],
 })
 export class ListComponent implements OnInit {
-  shoppinglist$: Observable<ShoppingList>;
+  state$: Observable<ListState>;
+  shoppingList$: Observable<ShoppingList>;
 
   constructor(private manager: ListManagerService) {}
 
   ngOnInit(): void {
-    this.shoppinglist$ = this.manager.getShoppingList();
+    this.state$ = this.manager.getShoppingLists$();
+    this.shoppingList$ = this.state$.pipe(map((state) => state.shoppingList));
   }
 }

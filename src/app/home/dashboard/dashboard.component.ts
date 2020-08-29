@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DashboardManagerService } from '../dashboard-data/dashboard-manager.service';
-import { DashBoardConfig } from '../dashboard-data/dashboard-config';
+import { DashboardManagerService } from '../dashboard-abstraction/dashboard-manager.service';
+import { DashBoardConfig } from '../dashboard-abstraction/dashboard-config';
 
 @Component({
   selector: 'app-dashboard',

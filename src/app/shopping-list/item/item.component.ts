@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ShoppingListElement } from '../list-data/list-interface';
+import { Component, Input } from '@angular/core';
+import { ShoppingListElement } from '../list-abstraction/list-interface';
 
 @Component({
   selector: 'app-item',

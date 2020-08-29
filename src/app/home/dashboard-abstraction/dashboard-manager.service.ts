@@ -12,5 +12,5 @@ export class DashboardManagerService {
     { text: 'Images', cols: 3, rows: 1, color: 'lightgreen' },
   ];
 
-  getDashBoardCondif = () => this.dashBoardConfig;
+  getDashBoardCondif = (): Array<DashBoardConfig> => this.dashBoardConfig;
 }

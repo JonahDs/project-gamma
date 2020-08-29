@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './home/dashboard/dashboard.component';
-import { ListComponent } from './shopping-list/list/list.component';
 const routes: Routes = [
   {
     path: '',
@@ -9,7 +8,10 @@ const routes: Routes = [
   },
   {
     path: 'shopping',
-    component: ListComponent,
+    loadChildren: () =>
+      import('./shopping-list/shopping-list.module').then(
+        (m) => m.ShoppingListModule
+      ),
   },
 ];
 
