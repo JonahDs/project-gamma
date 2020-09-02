@@ -3,4 +3,5 @@ export interface DashBoardConfig {
   text: string;
   rows: number;
   cols: number;
+  routerLink: string;
 }

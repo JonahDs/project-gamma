@@ -8,6 +8,8 @@ import { ListComponent } from './list/list.component';
 import { MaterialModule } from '../material/material.module';
 import { RouterModule, Routes } from '@angular/router';
 import { ItemComponent } from './item/item.component';
+import { AnimatedMatIconComponent } from '../animated-mat-icon/animated-mat-icon.component';
+import { DialogInjectComponent } from '../popup/dialog-inject/dialog-inject.component';
 
 const routes: Routes = [
   {
@@ -17,7 +19,12 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [ListComponent, ItemComponent],
+  declarations: [
+    ListComponent,
+    ItemComponent,
+    AnimatedMatIconComponent,
+    DialogInjectComponent,
+  ],
   imports: [
     CommonModule,
     MaterialModule,
@@ -25,5 +32,6 @@ const routes: Routes = [
     StoreModule.forFeature('shoppingList', listReducer),
     RouterModule.forChild(routes),
   ],
+  entryComponents: [DialogInjectComponent],
 })
 export class ShoppingListModule {}

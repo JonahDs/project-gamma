@@ -8,3 +8,8 @@ export interface ShoppingListElement {
   id: number;
   name: string;
 }
+
+export interface AnimatedButton {
+  animate: boolean;
+  color: string;
+}

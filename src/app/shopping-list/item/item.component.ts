@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { MatCheckboxChange } from '@angular/material/checkbox';
 import { ShoppingListElement } from '../list-abstraction/list-interface';
 
 @Component({
@@ -8,4 +9,9 @@ import { ShoppingListElement } from '../list-abstraction/list-interface';
 })
 export class ItemComponent {
   @Input() item: ShoppingListElement;
+  @Output() changed = new EventEmitter();
+
+  change(event: MatCheckboxChange) {
+    this.changed.emit(event.checked);
+  }
 }

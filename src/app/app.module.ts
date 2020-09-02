@@ -11,6 +11,7 @@ import { MaterialModule } from './material/material.module';
 import { ShoppingListModule } from './shopping-list/shopping-list.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [AppComponent, DashboardComponent],

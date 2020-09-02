@@ -1,1 +1,9 @@
-<p>{{item?.name}}</p>
+<div class="component-group">
+    <div class="component-host">
+        <mat-checkbox (change)="change($event)"></mat-checkbox>
+        <p>{{item?.name}}</p>
+    </div>
+    <div class="component-icons">
+        <mat-icon>chevron_right</mat-icon>
+    </div>
+</div>

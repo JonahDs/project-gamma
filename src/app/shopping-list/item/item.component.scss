@@ -1,0 +1,16 @@
+:host {
+  width: 100%;
+
+  .component {
+    &-host {
+      display: flex;
+      p {
+        margin-left: 8px;
+      }
+    }
+    &-group {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}

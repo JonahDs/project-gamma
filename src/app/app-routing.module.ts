@@ -13,6 +13,14 @@ const routes: Routes = [
         (m) => m.ShoppingListModule
       ),
   },
+  {
+    path: 'images',
+    component: DashboardComponent,
+  },
+  {
+    path: 'recepies',
+    component: DashboardComponent,
+  },
 ];
 
 @NgModule({
