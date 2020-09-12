@@ -1,7 +1,7 @@
 <ng-container *ngIf="!(state$ | async).isFetching; else loading">
     <mat-list>
         <mat-list-item *ngFor="let item of (shoppingList$ | async)">
-            <app-item [item]="item" (changed)="isItemSelected($event)"></app-item>
+            <app-item [item]="item" (changed)="isItemSelected($event)" (details)="navigateToDetails($event)"></app-item>
         </mat-list-item>
     </mat-list>
     <ng-container *ngIf="buttonSettings$ | async as settings">

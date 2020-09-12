@@ -1,0 +1,36 @@
+<!-- <ng-container *ngIf="!(state$ | async).isFetching; else loading">
+    <mat-list>
+        <mat-list-item *ngFor="let item of (shoppingList$ | async)">
+            <app-item [item]="item" (changed)="isItemSelected($event)"></app-item>
+        </mat-list-item>
+    </mat-list>
+    <ng-container *ngIf="buttonSettings$ | async as settings">
+        <button (click)="openDialog()" class="action-button" mat-fab [color]="settings.color">
+            <app-animated-mat-icon start="add" end="delete" [animate]="settings.animate" animateFromParent="true">
+            </app-animated-mat-icon>
+        </button>
+    </ng-container>
+</ng-container> -->
+<ng-container *ngIf="(details$ | async) as state">
+    <ng-container *ngIf="!state.isFetching; else loading">
+        <ng-container *ngIf="state.details; else emptyState">
+            <h1>{{state.details.name}}</h1>
+            <mat-list>
+                <mat-list-item *ngFor="let item of state.details.items">
+                    <app-detail [item]="item"></app-detail>
+                </mat-list-item>
+            </mat-list>
+        </ng-container>
+        <button class="action-button" mat-fab>
+            <app-animated-mat-icon start="add" end="delete" animate="false" animateFromParent="true">
+            </app-animated-mat-icon>
+        </button>
+    </ng-container>
+</ng-container>
+
+
+<ng-template #emptyState>
+    <p>Looks like this list is still empty! Try adding some items by clicking the '+' at the bottom.</p>
+</ng-template>
+
+<ng-template #loading>Loading...</ng-template>

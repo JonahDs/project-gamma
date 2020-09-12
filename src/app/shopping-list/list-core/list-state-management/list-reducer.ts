@@ -1,10 +1,12 @@
 import { Action, createReducer, on } from '@ngrx/store';
-import { ShoppingList } from '../../list-abstraction/list-interface';
+import { ShoppingListElement } from '../../list-abstraction/list-interface';
 import {
   fetchError,
+  fetchItemSucces,
   fetchList,
   fetchSuccess,
   isFetching,
+  postShoppingList,
 } from './list-actions';
 import { initializeState, ListState } from './state';
 
@@ -19,12 +21,18 @@ const reducer = createReducer(
     shoppingList: payload,
     isFetching: false,
   })),
+  on(postShoppingList, (state) => ({ ...state })),
+  on(fetchItemSucces, (state, { payload }) => ({
+    ...state,
+    shoppingList: [...state.shoppingList, payload],
+    isFetching: false,
+  })),
   on(fetchError, (state, { error }) => ({ ...state, error, isFetching: false }))
 );
 
 export function listReducer(
   state: ListState | undefined,
   action: Action
-): { error: string; shoppingList: ShoppingList } {
+): { error: string; shoppingList: ShoppingListElement[] } {
   return reducer(state, action);
 }

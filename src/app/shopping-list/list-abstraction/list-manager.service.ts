@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { AnimatedButton } from 'src/app/animated-mat-icon/animated-mat-icon-settings.interface';
 import { DialogSetting } from 'src/app/popup/dialog-settings';
 import { ListState } from '../list-core/list-state-management/state';
 import { ListStateManagerService } from '../list-core/list-state-manager.service';
-import { AnimatedButton } from './list-interface';
+import { CreateShoppingListElement } from './list-interface';
 
 @Injectable({
   providedIn: 'root',
@@ -28,6 +29,11 @@ export class ListManagerService {
 
   getShoppingLists$ = (): Observable<ListState> =>
     this.stateManager.fetchShoppingList$();
+
+  postShoppingListElement$ = (
+    element: CreateShoppingListElement
+  ): Observable<ListState> =>
+    this.stateManager.postShoppingListElement$(element);
 
   changeSelectedState(checked: boolean): void {
     checked ? this.selectedItems.push(true) : this.selectedItems.pop();

@@ -1,7 +1,11 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ShoppingList } from '../list-abstraction/list-interface';
+import { environment } from 'src/environments/environment';
+import {
+  CreateShoppingListElement,
+  ShoppingListElement,
+} from '../list-abstraction/list-interface';
 
 @Injectable({
   providedIn: 'root',
@@ -9,6 +13,14 @@ import { ShoppingList } from '../list-abstraction/list-interface';
 export class ListApiService {
   constructor(private http: HttpClient) {}
 
-  getShoppingList$ = (): Observable<ShoppingList> =>
-    this.http.get<ShoppingList>('/api/shopping-list');
+  getShoppingList$ = (): Observable<ShoppingListElement[]> =>
+    this.http.get<ShoppingListElement[]>(`${environment.apiUrl}/shopping-list`);
+
+  postShoppingList$ = (
+    element: CreateShoppingListElement
+  ): Observable<ShoppingListElement> =>
+    this.http.post<ShoppingListElement>(
+      `${environment.apiUrl}/shopping-list/create`,
+      element
+    );
 }

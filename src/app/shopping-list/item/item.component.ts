@@ -10,8 +10,13 @@ import { ShoppingListElement } from '../list-abstraction/list-interface';
 export class ItemComponent {
   @Input() item: ShoppingListElement;
   @Output() changed = new EventEmitter();
+  @Output() details = new EventEmitter();
 
-  change(event: MatCheckboxChange) {
+  change(event: MatCheckboxChange): void {
     this.changed.emit(event.checked);
+  }
+
+  navigateToDetails(): void {
+    this.details.emit(this.item._id);
   }
 }

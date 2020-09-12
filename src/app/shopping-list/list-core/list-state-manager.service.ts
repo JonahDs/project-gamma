@@ -1,7 +1,12 @@
 import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { fetchList, isFetching } from './list-state-management/list-actions';
+import { CreateShoppingListElement } from '../list-abstraction/list-interface';
+import {
+  fetchList,
+  isFetching,
+  postShoppingList,
+} from './list-state-management/list-actions';
 import { ListState } from './list-state-management/state';
 
 @Injectable({
@@ -17,6 +22,15 @@ export class ListStateManagerService {
   fetchShoppingList$(): Observable<ListState> {
     this.store.dispatch(isFetching());
     this.store.dispatch(fetchList());
+
+    return this.state$;
+  }
+
+  postShoppingListElement$(
+    element: CreateShoppingListElement
+  ): Observable<ListState> {
+    this.store.dispatch(isFetching());
+    this.store.dispatch(postShoppingList({ payload: element }));
 
     return this.state$;
   }
